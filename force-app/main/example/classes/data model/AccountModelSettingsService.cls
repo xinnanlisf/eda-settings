@@ -25,29 +25,29 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 /**
-* @author Salesforce.org
-* @date 2021
-* @group Health Check
-* @group-content ../../ApexDocContent/HealthCheck.htm
-* @description Returns an AccountModelSettings model.
-*/
+ * @author Salesforce.org
+ * @date 2021
+ * @group Health Check
+ * @group-content ../../ApexDocContent/HealthCheck.htm
+ * @description Returns an AccountModelSettings model.
+ */
 public virtual with sharing class AccountModelSettingsService {
-
     /*********************************************
-    * @description Instance for Singleton Pattern
-    **********************************************/
+     * @description Instance for Singleton Pattern
+     **********************************************/
     @TestVisible
     private static AccountModelSettingsService instance;
 
     /*********************************************************************
-    * @description Empty constructor is not public for Singleton Pattern
-    **********************************************************************/
-    protected AccountModelSettingsService() {}
+     * @description Empty constructor is not public for Singleton Pattern
+     **********************************************************************/
+    protected AccountModelSettingsService() {
+    }
 
     /*****************************************************************************
-    * @description Static method to get the current instance for Singleton pattern
-    * @return The instance of AccountModelSettingsService.
-    ******************************************************************************/
+     * @description Static method to get the current instance for Singleton pattern
+     * @return The instance of AccountModelSettingsService.
+     ******************************************************************************/
     public static AccountModelSettingsService getInstance() {
         if (instance == null) {
             instance = new AccountModelSettingsService();
@@ -57,17 +57,17 @@ public virtual with sharing class AccountModelSettingsService {
     }
 
     /*******************************************************************************************************
-    * @description Returns model for the AccountModelSettingsModel
-    * @return AccountModelSettingsModel The model for the AccountModelSettingsModel
-    ********************************************************************************************************/
+     * @description Returns model for the AccountModelSettingsModel
+     * @return AccountModelSettingsModel The model for the AccountModelSettingsModel
+     ********************************************************************************************************/
     public virtual AccountModelSettingsModel getAccountModelSettingsModel() {
         return this.locateAccountModelSettingsMapper().getAccountModelSettingsModel();
     }
 
     /*******************************************************************************************************
-    * @description Returns the instance of AccountModelSettingsMapper class
-    * @return The instance of AccountModelSettingsMapper class
-    ********************************************************************************************************/
+     * @description Returns the instance of AccountModelSettingsMapper class
+     * @return The instance of AccountModelSettingsMapper class
+     ********************************************************************************************************/
     @TestVisible
     private AccountModelSettingsMapper locateAccountModelSettingsMapper() {
         return AccountModelSettingsMapper.getInstance();

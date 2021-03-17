@@ -25,31 +25,30 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 /**
-* @author Salesforce.org
-* @date 2020
-* @group
-* @group-content ../../ApexDocContent/HealthCheck.htm
-* @description Mapper class for Record Type
-*/
+ * @author Salesforce.org
+ * @date 2020
+ * @group
+ * @group-content ../../ApexDocContent/HealthCheck.htm
+ * @description Mapper class for Record Type
+ */
 public virtual with sharing class RecordTypeMapper {
-
     /*********************************************
-    * @description Instance for Singleton Pattern
-    **********************************************/
+     * @description Instance for Singleton Pattern
+     **********************************************/
     @TestVisible
     private static RecordTypeMapper instance;
 
     /*********************************************************************
-    * @description Empty constructor is not public for Singleton Pattern
-    **********************************************************************/
-    protected RecordTypeMapper() {}
+     * @description Empty constructor is not public for Singleton Pattern
+     **********************************************************************/
+    protected RecordTypeMapper() {
+    }
 
     /******************************************************************************
-    * @description Static method to get the current instance for Singleton pattern
-    * @return The instance of RecordTypeMapper.
-    ******************************************************************************/
+     * @description Static method to get the current instance for Singleton pattern
+     * @return The instance of RecordTypeMapper.
+     ******************************************************************************/
     public static RecordTypeMapper getInstance() {
-
         if (instance == null) {
             instance = new RecordTypeMapper();
         }
@@ -58,20 +57,26 @@ public virtual with sharing class RecordTypeMapper {
     }
 
     /******************************************************************************
-    * @description Get a map of Record Type Model By Id for specified SObjectType
-    * @Param SObjectype
-    * @return A map of Record Type Model By Id
-    ******************************************************************************/
+     * @description Get a map of Record Type Model By Id for specified SObjectType
+     * @Param SObjectype
+     * @return A map of Record Type Model By Id
+     ******************************************************************************/
     public virtual Map<Id, RecordTypeModel> getModelByIdMapForSObjectType(Schema.SObjectType sObjectType) {
         Map<Id, RecordTypeModel> recordTypeModelById = new Map<Id, RecordTypeModel>();
-        Map<String, Schema.RecordTypeInfo> recordTypeInfoByRecordTypeName = Util_Describe.getRecordTypeInfoDevNameMap(sObjectType.getDescribe().getName());
-        
+        Map<String, Schema.RecordTypeInfo> recordTypeInfoByRecordTypeName = Util_Describe.getRecordTypeInfoDevNameMap(
+            sObjectType.getDescribe().getName()
+        );
+
         for (Schema.RecordTypeInfo recordTypeInfo : recordTypeInfoByRecordTypeName.values()) {
-            RecordTypeModel recordTypeModel = new RecordTypeModel(recordTypeInfo.getRecordTypeId(), recordTypeInfo.getName(), recordTypeInfo.getDeveloperName(), recordTypeInfo.isActive());
+            RecordTypeModel recordTypeModel = new RecordTypeModel(
+                recordTypeInfo.getRecordTypeId(),
+                recordTypeInfo.getName(),
+                recordTypeInfo.getDeveloperName(),
+                recordTypeInfo.isActive()
+            );
             recordTypeModelById.put(recordTypeModel.Id, recordTypeModel);
         }
 
         return recordTypeModelById;
     }
-
 }

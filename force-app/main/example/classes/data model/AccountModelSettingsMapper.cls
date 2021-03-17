@@ -25,29 +25,29 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 /**
-* @author Salesforce.org
-* @date 2021
-* @group Health Check
-* @group-content ../../ApexDocContent/HealthCheck.htm
-* @description Mapper class to return AccountModelSettings model
-*/
+ * @author Salesforce.org
+ * @date 2021
+ * @group Health Check
+ * @group-content ../../ApexDocContent/HealthCheck.htm
+ * @description Mapper class to return AccountModelSettings model
+ */
 public virtual with sharing class AccountModelSettingsMapper {
-
     /*********************************************
-    * @description Instance for Singleton Pattern
-    **********************************************/
+     * @description Instance for Singleton Pattern
+     **********************************************/
     @TestVisible
     private static AccountModelSettingsMapper instance;
 
     /*********************************************************************
-    * @description Empty constructor is not public for Singleton Pattern
-    **********************************************************************/
-    protected AccountModelSettingsMapper() {}
+     * @description Empty constructor is not public for Singleton Pattern
+     **********************************************************************/
+    protected AccountModelSettingsMapper() {
+    }
 
     /*****************************************************************************
-    * @description Static method to get the current instance for Singleton pattern
-    * @return The instance of AccountModelSettingsMapper.
-    ******************************************************************************/
+     * @description Static method to get the current instance for Singleton pattern
+     * @return The instance of AccountModelSettingsMapper.
+     ******************************************************************************/
     public static AccountModelSettingsMapper getInstance() {
         if (instance == null) {
             instance = new AccountModelSettingsMapper();
@@ -57,14 +57,17 @@ public virtual with sharing class AccountModelSettingsMapper {
     }
 
     /**********************************************************************************
-    * @description Returns the AccountModelSettings Model
-    * @return AccountModelSettingsModel The AccountModelSettings model
-    **********************************************************************************/
+     * @description Returns the AccountModelSettings Model
+     * @return AccountModelSettingsModel The AccountModelSettings model
+     **********************************************************************************/
     public virtual AccountModelSettingsModel getAccountModelSettingsModel() {
         Hierarchy_Settings__c hierarchySettings = UTIL_CustomSettingsFacade.getSettings();
-        AccountModelSettingsModel accModelSettingsModel = 
-             new AccountModelSettingsModel(hierarchySettings.Account_Processor__c, hierarchySettings.Administrative_Account_Record_Type__c, hierarchySettings.Household_Addresses_RecType__c);
+        AccountModelSettingsModel accModelSettingsModel = new AccountModelSettingsModel(
+            hierarchySettings.Account_Processor__c,
+            hierarchySettings.Administrative_Account_Record_Type__c,
+            hierarchySettings.Household_Addresses_RecType__c
+        );
 
-       return accModelSettingsModel;
+        return accModelSettingsModel;
     }
 }

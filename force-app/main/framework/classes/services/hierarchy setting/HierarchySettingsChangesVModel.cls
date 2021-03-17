@@ -25,33 +25,35 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 /**
-* @author Salesforce.org
-* @date 2021
-* @group 
-* @group-content ../../ApexDocContent/EdaSettings.htm
-* @description Model to abstract data for changes made to Hierarchy Settings.
-*/
+ * @author Salesforce.org
+ * @date 2021
+ * @group
+ * @group-content ../../ApexDocContent/EdaSettings.htm
+ * @description Model to abstract data for changes made to Hierarchy Settings.
+ */
 public with sharing class HierarchySettingsChangesVModel {
-    @AuraEnabled public Map<String, String> settingsSingleValueBySettingsName { get; set; }
-    @AuraEnabled public Map<String, List<String>> settingsListSettingsName { get; set; }
+    @AuraEnabled
+    public Map<String, String> settingsSingleValueBySettingsName { get; set; }
+    @AuraEnabled
+    public Map<String, List<String>> settingsListSettingsName { get; set; }
 
     /**********************************************************************************************************************
-    * @description No argument constructor
-    * @return A HierarchySettingsChangesVModel with empty maps
-    **********************************************************************************************************************/
+     * @description No argument constructor
+     * @return A HierarchySettingsChangesVModel with empty maps
+     **********************************************************************************************************************/
     public HierarchySettingsChangesVModel() {
         this.settingsSingleValueBySettingsName = new Map<String, String>();
         this.settingsListSettingsName = new Map<String, List<String>>();
     }
 
     /**********************************************************************************************************************
-    * @description Two parameter constructor
-    * @param  settingsSingleValueBySettingsName A map of changed hierarchy settings with single values mapped by name 
-    * @param  settingsListSettingsName A map of changed hierarchy settings with collections mapped by name 
-    * @return A HierarchySettingsChangesVModel with all properties populated
-    **********************************************************************************************************************/ 
+     * @description Two parameter constructor
+     * @param  settingsSingleValueBySettingsName A map of changed hierarchy settings with single values mapped by name
+     * @param  settingsListSettingsName A map of changed hierarchy settings with collections mapped by name
+     * @return A HierarchySettingsChangesVModel with all properties populated
+     **********************************************************************************************************************/
     public HierarchySettingsChangesVModel(
-        Map<String, String> settingsSingleValueBySettingsName, 
+        Map<String, String> settingsSingleValueBySettingsName,
         Map<String, List<String>> settingsListSettingsName
     ) {
         this.settingsSingleValueBySettingsName = settingsSingleValueBySettingsName;

@@ -25,50 +25,50 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 /**
-* @author Salesforce.org
-* @date 2021
-* @group 
-* @group-content ../../ApexDocContent/EdaSettings.htm
-* @description Model to abstract data from database for Hierarchy Settings.
-*/
+ * @author Salesforce.org
+ * @date 2021
+ * @group
+ * @group-content ../../ApexDocContent/EdaSettings.htm
+ * @description Model to abstract data from database for Hierarchy Settings.
+ */
 public with sharing class HierarchySettingsModel {
     public Hierarchy_Settings__c hierarchySettings { get; private set; }
-    
+
     /**************************************************************************
-    * @description Single parameter constructor 
-    * @param  hierarchySettings A Hierarchy_Settings__c object
-    * @return A HierarchySettingsModel with all parameters populated.
-    **************************************************************************/
+     * @description Single parameter constructor
+     * @param  hierarchySettings A Hierarchy_Settings__c object
+     * @return A HierarchySettingsModel with all parameters populated.
+     **************************************************************************/
     public HierarchySettingsModel(Hierarchy_Settings__c hierarchySettings) {
         this.hierarchySettings = hierarchySettings;
     }
 
     /****************************************************************************
-    * @description Helper method to set the value for a Hierarchy Settings field
-    * with a valud of type String.
-    * @param  fieldName A Hierarchy Settings field name
-    * @param  fieldValue A String value for the specified Hierarchy Settings field
-    ****************************************************************************/
+     * @description Helper method to set the value for a Hierarchy Settings field
+     * with a valud of type String.
+     * @param  fieldName A Hierarchy Settings field name
+     * @param  fieldValue A String value for the specified Hierarchy Settings field
+     ****************************************************************************/
     public void setSettingsField(String fieldName, String fieldValue) {
         this.hierarchySettings.put(fieldName, fieldValue);
     }
 
     /****************************************************************************
-    * @description Helper method to set the value for a Hierarchy Settings field
-    * with a valud of type Boolean.
-    * @param  fieldName A Hierarchy Settings field name
-    * @param  fieldValue A Boolean value for the specified Hierarchy Settings field
-    ****************************************************************************/
+     * @description Helper method to set the value for a Hierarchy Settings field
+     * with a valud of type Boolean.
+     * @param  fieldName A Hierarchy Settings field name
+     * @param  fieldValue A Boolean value for the specified Hierarchy Settings field
+     ****************************************************************************/
     public void setSettingsField(String fieldName, Boolean fieldValue) {
         this.hierarchySettings.put(fieldName, fieldValue);
     }
 
     /****************************************************************************
-    * @description Helper method to set the value for a Hierarchy Settings field
-    * with a valud of type DateTime.
-    * @param  fieldName A Hierarchy Settings field name
-    * @param  fieldValue A DateTime value for the specified Hierarchy Settings field
-    ****************************************************************************/
+     * @description Helper method to set the value for a Hierarchy Settings field
+     * with a valud of type DateTime.
+     * @param  fieldName A Hierarchy Settings field name
+     * @param  fieldValue A DateTime value for the specified Hierarchy Settings field
+     ****************************************************************************/
     public void setSettingsField(String fieldName, Datetime fieldValue) {
         this.hierarchySettings.put(fieldName, fieldValue);
     }

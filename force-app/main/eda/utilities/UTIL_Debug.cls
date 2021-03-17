@@ -28,36 +28,37 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 /**
-* @author Salesforce.org
-* @date 2014
-* @group Utilities
-* @group-content ../../ApexDocContent/Utilities.htm
-* @description Utility class for debug statements to turn them off in a managed context, as well as to display relevant performance information.
-*/
+ * @author Salesforce.org
+ * @date 2014
+ * @group Utilities
+ * @group-content ../../ApexDocContent/Utilities.htm
+ * @description Utility class for debug statements to turn them off in a managed context, as well as to display relevant performance information.
+ */
 public class UTIL_Debug {
-
     //enable debug logs in all tests, otherwise get the setting
-    public static boolean enabled = test.isRunningTest() ? true : UTIL_CustomSettingsFacade.getSettings().Enable_Debug__c;
+    public static boolean enabled = test.isRunningTest()
+        ? true
+        : UTIL_CustomSettingsFacade.getSettings().Enable_Debug__c;
 
     /*******************************************************************************************************
-    * @description Prints a debug message to the debug log, if debugging is enabled or a test is being run.
-    * @param message The message to print.
-    * @return void
-    */
-    public static void debug (string message) {
+     * @description Prints a debug message to the debug log, if debugging is enabled or a test is being run.
+     * @param message The message to print.
+     * @return void
+     */
+    public static void debug(string message) {
         if (enabled) {
             System.debug(message);
-        }    
+        }
     }
 
     /*******************************************************************************************************
-    * @description Prints a debug message to the debug log, if debugging is enabled or a test is being run, at the specified
-    *              logging level.
-    * @param message The message to print.
-    * @param level The level to output the message at.
-    * @return void
-    */
-    public static void debug (System.LoggingLevel level, string message) {
+     * @description Prints a debug message to the debug log, if debugging is enabled or a test is being run, at the specified
+     *              logging level.
+     * @param message The message to print.
+     * @param level The level to output the message at.
+     * @return void
+     */
+    public static void debug(System.LoggingLevel level, string message) {
         if (enabled) {
             System.debug(level, message);
         }
@@ -69,34 +70,58 @@ public class UTIL_Debug {
     * @param message The message to print.
     * @return void
     */
-    public static void debugWithInfo (string message) {
+    public static void debugWithInfo(string message) {
         if (enabled) {
             System.debug(
-                message + 
-                ' Heap:' + Limits.getHeapSize() + '/' + Limits.getLimitHeapSize() +
-                ' CPU:' + Limits.getCpuTime() + '/' + Limits.getLimitCpuTime() + 
-                ' Query:' + Limits.getQueries() + '/' + Limits.getLimitQueries() + 
-                ' Rows:' + Limits.getDMLRows() + '/' + Limits.getLimitDMLRows()
+                message +
+                ' Heap:' +
+                Limits.getHeapSize() +
+                '/' +
+                Limits.getLimitHeapSize() +
+                ' CPU:' +
+                Limits.getCpuTime() +
+                '/' +
+                Limits.getLimitCpuTime() +
+                ' Query:' +
+                Limits.getQueries() +
+                '/' +
+                Limits.getLimitQueries() +
+                ' Rows:' +
+                Limits.getDMLRows() +
+                '/' +
+                Limits.getLimitDMLRows()
             );
         }
     }
 
     /*******************************************************************************************************
-    * @description Prints a debug message to the debug log, if debugging is enabled or a test is being run, at the specified logging
-    *              level, with additional info, such as heap, cpu, query, and rows usage.
-    * @param message The message to print.
-    * @param level The level to output the message at.
-    * @return void
-    */
-    public static void debugWithInfo (System.LoggingLevel level, string message) {
+     * @description Prints a debug message to the debug log, if debugging is enabled or a test is being run, at the specified logging
+     *              level, with additional info, such as heap, cpu, query, and rows usage.
+     * @param message The message to print.
+     * @param level The level to output the message at.
+     * @return void
+     */
+    public static void debugWithInfo(System.LoggingLevel level, string message) {
         if (enabled) {
             System.debug(
                 level,
-                message + 
-                ' Heap:' + Limits.getHeapSize() + '/' + Limits.getLimitHeapSize() +
-                ' CPU:' + Limits.getCpuTime() + '/' + Limits.getLimitCpuTime() + 
-                ' Query:' + Limits.getQueries() + '/' + Limits.getLimitQueries() + 
-                ' Rows:' + Limits.getDMLRows() + '/' + Limits.getLimitDMLRows()
+                message +
+                ' Heap:' +
+                Limits.getHeapSize() +
+                '/' +
+                Limits.getLimitHeapSize() +
+                ' CPU:' +
+                Limits.getCpuTime() +
+                '/' +
+                Limits.getLimitCpuTime() +
+                ' Query:' +
+                Limits.getQueries() +
+                '/' +
+                Limits.getLimitQueries() +
+                ' Rows:' +
+                Limits.getDMLRows() +
+                '/' +
+                Limits.getLimitDMLRows()
             );
         }
     }
