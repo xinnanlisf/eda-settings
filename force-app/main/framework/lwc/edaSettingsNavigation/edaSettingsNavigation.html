@@ -1,0 +1,12 @@
+<template>
+    <nav class="slds-nav-vertical slds-nav-vertical_compact">
+        <div class="slds-grid slds-grid_vertical eda-height_full" data-qa-locator="edaSettingsNavigationMenu">
+            <template for:each={settingsNavigationViewModel.navigationSections} for:item="navigationSection">
+                <c-eda-settings-navigation-section
+                    key={navigationSection.id}
+                    view-model={navigationSection}
+                ></c-eda-settings-navigation-section>
+            </template>
+        </div>
+    </nav>
+</template>
