@@ -8,26 +8,26 @@
             class="slds-col slds-col_bump-left slds-text-align_right slds-size--1-of-2 slds-p-horizontal_small slds-p-vertical_small"
         >
             <span>
-                <div if:true={editButtonShown}>
+                <div if:true="{editButtonShown}">
                     <lightning-button
-                        label={labelReference.settingsButtonEdit}
-                        title={labelReference.settingsButtonEdit}
-                        onclick={handleEditClick}
+                        label="{labelReference.settingsButtonEdit}"
+                        title="{labelReference.settingsButtonEdit}"
+                        onclick="{handleEditClick}"
                         class="slds-p-right_x-small"
                     ></lightning-button>
                 </div>
-                <div if:false={editButtonShown}>
+                <div if:false="{editButtonShown}">
                     <lightning-button
-                        label={labelReference.settingsButtonCancel}
-                        title={labelReference.settingsButtonCancel}
-                        onclick={handleCancelClick}
+                        label="{labelReference.settingsButtonCancel}"
+                        title="{labelReference.settingsButtonCancel}"
+                        onclick="{handleCancelClick}"
                         class="slds-m-left_x-small"
                     ></lightning-button>
                     <lightning-button
                         variant="brand"
-                        label={labelReference.settingsButtonSave}
-                        title={labelReference.settingsButtonSave}
-                        onclick={handleSaveClick}
+                        label="{labelReference.settingsButtonSave}"
+                        title="{labelReference.settingsButtonSave}"
+                        onclick="{handleSaveClick}"
                         class="slds-p-right_x-small"
                     ></lightning-button>
                 </div>

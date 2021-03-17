@@ -1,9 +1,9 @@
-minimum_cumulusci_version: '3.30.0'
+minimum_cumulusci_version: "3.30.0"
 project:
     name: eda-settings
     package:
         name: eda-settings
-        api_version: '50.0'
+        api_version: "50.0"
     git:
     source_format: sfdx
 
@@ -18,4 +18,3 @@ tasks:
         options:
             path: robot/eda-settings/tests
             output: robot/eda-settings/doc/eda-settings_tests.html
-

@@ -6,7 +6,7 @@ import settingsButtonSave from "@salesforce/label/c.stgBtnSave";
 
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
-import updateHierarchySettings from "@salesforce/apex/HierarchySettingsChangesController.updateHierarchySettings";
+//import updateHierarchySettings from "@salesforce/apex/HierarchySettingsChangesController.updateHierarchySettings";
 
 export default class SettingsSaveCanvas extends LightningElement {
     @api componentTitle;
