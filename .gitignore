@@ -21,3 +21,6 @@ robot/eda-settings/results/
 
 # Misc
 .DS_Store
+
+#devDependencies
+node_modules
