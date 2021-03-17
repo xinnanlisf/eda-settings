@@ -25,53 +25,53 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 /**
- * @author Salesforce.org
- * @date 2021
- * @group EDA Settings
- * @group-content ../../ApexDocContent/edaSettings.htm
- * @description View model mapper class used to retrieve hierarchy setting mappings
- * related to Account model settings.
- */
-public virtual with sharing class AccountModelSettingsVMapper {
+* @author Salesforce.org
+* @date 2021
+* @group Permission
+* @group-content ../../ApexDocContent/Permission.htm
+* @description Mapper class for Permission Set assignment.
+*/
+public virtual with sharing class PermissionSetAssignmentMapper {
+    
     /*********************************************
-     * @description Instance for Singleton Pattern
-     **********************************************/
+    * @description Instance for Singleton Pattern
+    **********************************************/
     @TestVisible
-    private static AccountModelSettingsVMapper instance;
+    private static PermissionSetAssignmentMapper instance;
 
     /*********************************************************************
-     * @description Empty constructor is not public for Singleton Pattern
-     **********************************************************************/
-    protected AccountModelSettingsVMapper() {
-    }
+    * @description Empty constructor is not public for Singleton Pattern
+    **********************************************************************/
+    protected PermissionSetAssignmentMapper() {}
 
     /*****************************************************************************
-     * @description Static method to get the current instance for Singleton pattern
-     * @return The instance of AccountModelSettingsVMapper.
-     ******************************************************************************/
-    public static AccountModelSettingsVMapper getInstance() {
+    * @description Static method to get the current instance for Singleton pattern
+    * @return The instance of PermissionSetAssignmentMapper.
+    ******************************************************************************/
+    public static PermissionSetAssignmentMapper getInstance() {
+
         if (instance == null) {
-            instance = new AccountModelSettingsVMapper();
+            instance = new PermissionSetAssignmentMapper();
         }
 
         return instance;
     }
 
     /*****************************************************************************
-     * @description Retrieves an instance of the AccountModelSettingsService class.
-     * @return An instance of AccountModelSettingsService.
-     ******************************************************************************/
-    @TestVisible
-    private AccountModelSettingsService locateAccountModelSettingsService() {
-        return AccountModelSettingsService.getInstance();
-    }
+    * @description Get a list of permission set ids assigned to the current user.
+    * @return A Set of permission set ids assigned to the current user.
+    ***************************************************************************************************************************/
+    public Set<Id> getAssignedPermissionSetIdsSetForCurrentUser() {
 
-    /*****************************************************************************
-     * @description Retrieves an instance of the RecordTypeService class.
-     * @return An instance of RecordTypeService.
-     ******************************************************************************/
-    @TestVisible
-    private RecordTypeService locateRecordTypeService() {
-        return RecordTypeService.getInstance();
+        Set<Id> assignedPermissionSetIdsSet = new Set<Id>();
+
+        List<PermissionSetAssignment> permissionSetAssignments = [SELECT PermissionSetId
+                                                                FROM PermissionSetAssignment
+                                                                WHERE AssigneeId = :UserInfo.getUserId()];
+        for (PermissionSetAssignment permissionSetAssignment : permissionSetAssignments) {
+            assignedPermissionSetIdsSet.add(permissionSetAssignment.PermissionSetId);
+        }
+        
+        return assignedPermissionSetIdsSet;      
     }
 }
